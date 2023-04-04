@@ -1,11 +1,21 @@
-{
+  {
     "manifest_version": 3,
-    "name": "projekt",
-    "version":"1.0.0",
+    "name": "Highlight Words",
+    "version": "1.0",
+    "description": "Highlights predetermined words on web pages.",
+    "permissions": ["scripting", "activeTab"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+      "service_worker": "background.js"
+    },
     "content_scripts": [
         {
-            "matches":["<all_urls>"],
-            "js": ["content.js"]
+          "matches": ["<all_urls>"],
+          "js": ["content.js"],
+          "all_frames": true
         }
-    ]
-}
+    ],
+    "action":{
+        "default_popup": "popup.html"
+    }
+  }
