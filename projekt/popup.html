@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Highlight Words Popup</title>
-  
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <h1>Highlight Words Popup</h1>
   <label for="word-input">Enter roots of words to highlight(separate by space: cookie data ...):</label>
   <input type="text" id="word-input">
   <button id="highlight-button">Highlight inputed words</button>
+  <br/>
+  <label for="zberiJezik">Izberite jezik:</label>
+  <select id="zberiJezik">
+    <option value="english">Angleščina</option>
+    <option value="slovene">Slovenščina</option>
+  </select>
   <br/>
   <label for="oznaciPomembneBesede">Označi pomembne besede, ki se pojavijo v Privacy Policy:</label>
   <button id="oznaciPomembneBesede">Označi</button>

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var highlightButton = document.getElementById("highlight-button");
     var wordInput = document.getElementById("word-input");
     var oznaciPomembneBesedeButton = document.getElementById("oznaciPomembneBesede");
-    
+    let languageSelect = document.getElementById("zberiJezik");
     
     highlightButton.addEventListener("click", function() {
       var words = wordInput.value.split(/\s+/).filter(Boolean);
@@ -10,11 +10,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     oznaciPomembneBesedeButton.addEventListener("click", function() {
-      chrome.runtime.sendMessage({ action: "pomembneBesede", words: koreni, celeBesede: celeBesede});
+      let selectedLanguage = languageSelect.value;
+      if (selectedLanguage === "slovene") {
+        chrome.runtime.sendMessage({ action: "pomembneBesede", words: koreni, celeBesede: celeBesede});  
+      } else if (selectedLanguage === "english") {
+        chrome.runtime.sendMessage({ action: "pomembneBesede", words: roots, celeBesede: fullWords});
+      }
     });
 
-
 });
+
 
 let koreni = ["oseb","podat","zbiran","uporab","deljenje","deli",
       "razkri","soglas","varn","hramba","sled","deli",                        //pomembni koreni besed za privacy
@@ -29,4 +34,14 @@ let celeBesede = ["osebni podatki","osebne podatke","ime","priimek",
     ];
 
 
+let roots = ["person","collec","use","sharing","share",
+    "disclose","consent","secur","storage","trac","divide",        //important roots for privacy
+    "cookie","log","third","party","register"
+  ];
 
+let fullWords = ["personal data","personal information","name","surname",
+    "password","username","phone","email","settings","cookies",
+    "disclosure","sharing","third parties","third party","security","logout",    //important full words for privacy
+    "transmission","processing","sending","cookies","storage","stored",
+    "privacy","IP","operating system","device","contact","address"
+  ];
