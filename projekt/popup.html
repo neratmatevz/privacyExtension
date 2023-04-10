@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>Highlight Words Popup</h1>
-  <label for="word-input">Enter roots of words to highlight(separate by space: cookie data ...):</label>
+  <h1>Označevalec besed</h1>
+  <label for="word-input">Vnesi korene besed, ki jih želiš označiti(loči jih z presledkom: cookie data ...):</label>
   <input type="text" id="word-input">
-  <button id="highlight-button">Highlight inputed words</button>
+  <button id="highlight-button">Označi vnešene besede</button>
   <br/>
   <label for="zberiJezik">Izberite jezik:</label>
   <select id="zberiJezik">
@@ -19,6 +19,15 @@
   <br/>
   <label for="oznaciPomembneBesede">Označi pomembne besede, ki se pojavijo v Privacy Policy:</label>
   <button id="oznaciPomembneBesede">Označi</button>
+  <hr>
+  <button id="toggle-cookies-button">Pokaži/Skrij piškotke</button>
+  <div id="skrij" style="display:none;">
+    <h1>Upravljalec piškotkov</h1>
+    <p>Izberi piškotke, ki ji želiš odstraniti:</p>
+    <ul id="cookie-list"></ul>
+    <h3 id="3rdParty"></h3>
+    <button id="delete-cookies-button" >Izbriši izbrane piškotke</button>
+  </div>
   
   <br/>
   <script src="popup.js"></script>

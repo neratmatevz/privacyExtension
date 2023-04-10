@@ -3,7 +3,7 @@
     "name": "Highlight Words",
     "version": "1.0",
     "description": "Highlights predetermined words on web pages.",
-    "permissions": ["scripting", "activeTab"],
+    "permissions": ["scripting", "activeTab","cookies"],
     "host_permissions": ["<all_urls>"],
     "background": {
       "service_worker": "background.js"
