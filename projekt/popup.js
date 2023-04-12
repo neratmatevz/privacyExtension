@@ -49,14 +49,14 @@ let fullWords = ["personal data","personal information","name","surname",
 chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
   var url = tabs[0].url;
 
-  // Get all cookies for the current URL
+  // Pridobi vse piškotke na tem url-ju
   chrome.cookies.getAll({ url: url }, function(cookies) {
     var cookieList = document.getElementById("cookie-list");
 
-    // Clear the cookie list before adding the updated cookies
+    //počisti list piškotkov pred dodajo updatanih piškotkov
     cookieList.innerHTML = "";
 
-    // Add a checkbox for each cookie
+    // dodaj checkbox za vsak piškotek(za brisanje)
     for (var i = 0; i < cookies.length; i++) {
       var cookie = cookies[i];
 
@@ -71,19 +71,19 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 
     preveriDomenoCookie(cookies);
 
-    // Add a click event listener to the delete button
     var deleteButton = document.getElementById("delete-cookies-button");
+
     deleteButton.addEventListener("click", function() {
       var selectedCookies = document.querySelectorAll("input[type=checkbox]:checked");
 
-      // Remove each selected cookie
+      // izbriši izbrane piškotke na strani
       for (var i = 0; i < selectedCookies.length; i++) {
         var cookieName = selectedCookies[i].value;
 
+        //api funkcija za brisanje piškotkov
         chrome.cookies.remove({ url: url, name: cookieName }, function() {
-          console.log("Cookie removed: " + cookieName);
 
-          // Update the cookie list after deleting a cookie
+          // posodobi list piškotkov po brisanju
           chrome.cookies.getAll({ url: url }, function(updatedCookies) {
             cookieList.innerHTML = "";
             for (var j = 0; j < updatedCookies.length; j++) {
